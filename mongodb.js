@@ -14,12 +14,23 @@ if(error){
 
 const db = client.db(databaseName)
 
-db.collection('Tasks').updateMany({
-    completed: false
- }, { 
-    $set: {
-        completed: true
-    }
+// db.collection('Tasks').updateMany({
+//     completed: false
+//  }, { 
+//     $set: {
+//         completed: true
+//     }
+// }).then((result)=>{
+// console.log(result)
+// }).catch((error)=>{
+// console.log(error)
+// })
+// })
+
+db.collection('Tasks').deleteOne({
+    description:"this is my first task"
+ 
+    
 }).then((result)=>{
 console.log(result)
 }).catch((error)=>{
