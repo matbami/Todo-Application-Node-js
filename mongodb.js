@@ -14,16 +14,15 @@ if(error){
 
 const db = client.db(databaseName)
 
-db.collection('Tasks').findOne({ _id: new ObjectID("5dbc3b95195b1c1854919e1b")} , (error,user) =>{
-if(error){
-    return console.log('unable to connect')
-}
-
-console.log(user)
+db.collection('Tasks').updateMany({
+    completed: false
+ }, { 
+    $set: {
+        completed: true
+    }
+}).then((result)=>{
+console.log(result)
+}).catch((error)=>{
+console.log(error)
 })
-
-db.collection('Tasks').find({completed:false}).toArray((error,user)=>{
-   console.log(user)
-})
-
 })
